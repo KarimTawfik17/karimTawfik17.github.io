@@ -31,14 +31,21 @@ function openCard(card) {
 
     }
 }
-
-    let cardsArr = shuffle([...cards]);
+document.getElementsByClassName("restart")[0].addEventListener("click",start);
+start();
+function start(){
+	moves = -1;
+	let cardsArr = shuffle([...cards]);
     deck.innerHTML = "";
     increaseMoves();
     for (let card of cardsArr) {
         card.className = "card";
         deck.append(card)
     }
+
+}
+
+
     // console.log(cards);
 
     // console.log(cards);
