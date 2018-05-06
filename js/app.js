@@ -3,6 +3,7 @@
  */
 const deck = document.getElementsByClassName("deck")[0];
 let cards = document.getElementsByClassName("card");
+let moves = -1;
 
 let openCards = [];
 
@@ -33,10 +34,10 @@ function openCard(card) {
 
     let cardsArr = shuffle([...cards]);
     deck.innerHTML = "";
+    increaseMoves();
     for (let card of cardsArr) {
         card.className = "card";
         deck.append(card)
-        
     }
     // console.log(cards);
 
@@ -67,11 +68,16 @@ function openCard(card) {
 
     deck.addEventListener("click", function(e) {
         if (e.target.nodeName === "LI" && e.target.className === "card") {
+        	increaseMoves();
             e.target.classList.add("open", "show");
             openCard(e.target)
         }
     })
 
+    function increaseMoves () {
+    	document.getElementsByClassName("moves")[0].textContent = ++moves ;
+    	
+    }
 
 
     /*
