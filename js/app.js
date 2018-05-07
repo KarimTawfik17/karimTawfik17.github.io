@@ -3,8 +3,10 @@
  */
 const deck = document.getElementsByClassName("deck")[0];
 let cards = document.getElementsByClassName("card");
+let time = 0 ; 
 let moves = -1;
-
+let firstClick = true ; 
+let timeInterval ;
 let openCards = [];
 
 function openCard(card) {
@@ -27,6 +29,7 @@ function openCard(card) {
         }
         if(openCards.length === 16){
         	console.log('finished');
+            clearInterval(timeInterval);
         }
 
     }
@@ -75,6 +78,10 @@ function start(){
 
     deck.addEventListener("click", function(e) {
         if (e.target.nodeName === "LI" && e.target.className === "card") {
+            if (firstClick) {
+                firstClick = false;
+                timeInterval = setInterval(increaseTime, 1000);
+            }
         	increaseMoves();
             e.target.classList.add("open", "show");
             openCard(e.target)
@@ -84,6 +91,9 @@ function start(){
     function increaseMoves () {
     	document.getElementsByClassName("moves")[0].textContent = ++moves ;
     	
+    }
+    function increaseTime () {
+        document.getElementsByClassName("time")[0].textContent = ++time ;
     }
 
 
