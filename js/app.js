@@ -8,6 +8,9 @@ let moves = -1;
 let firstClick = true ; 
 let timeInterval ;
 let openCards = [];
+let winnerContainer = document.getElementsByClassName("winner-container")[0];
+let close = document.getElementsByClassName("close")[0];
+winnerContainer.style.display = 'none';
 
 function openCard(card) {
     openCards.push(card);
@@ -31,6 +34,8 @@ function openCard(card) {
         if(openCards.length === 16){
         	console.log('finished');
             clearInterval(timeInterval);
+            winnerContainer.style.display = 'block';
+
         }
 
     }
@@ -39,10 +44,12 @@ document.getElementsByClassName("restart")[0].addEventListener("click",start);
 start();
 function start(){
 	moves = -1;
+    time = -1;
     openCards = [];
 	let cardsArr = shuffle([...cards]);
     deck.innerHTML = "";
     increaseMoves();
+    increaseTime();
     for (let card of cardsArr) {
         card.className = "card";
         deck.append(card)
@@ -92,11 +99,25 @@ function start(){
 
     function increaseMoves () {
     	document.getElementsByClassName("moves")[0].textContent = ++moves ;
+        document.getElementsByClassName("moves")[1].textContent = moves ;
     	
     }
     function increaseTime () {
         document.getElementsByClassName("time")[0].textContent = ++time ;
+        document.getElementsByClassName("time")[1].textContent = time ;
     }
+
+    function playAgain(){
+        winnerContainer.style.display = 'none';
+        firstClick = true;
+        start();
+    }
+
+    close.addEventListener('click', function(){
+
+        winnerContainer.style.display = 'none';
+
+    });
 
 
     /*

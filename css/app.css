@@ -149,7 +149,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+/*.score-panel */.stars {
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -159,7 +159,7 @@ h1 {
 .score-panel .time{
     margin: 0 0 0 20px;
 }
-.score-panel .stars li {
+/*.score-panel*/ .stars li {
     list-style: none;
     display: inline-block;
 }
@@ -169,3 +169,80 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+Winner pop-up
+styles*/
+.winner-container{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4);
+}
+.winner{
+
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 70%;
+    text-align: center;
+    animation: fade 2s ease both;
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+        transform: scale(0.1);
+        background-color: black;
+    }
+    100%{
+        opacity: 1;
+        background-color: #fefefe;
+
+    }
+
+}
+
+.winner h1 {
+    color: blue;
+}
+.winner span {
+    color: red;
+    font-weight: bold;
+}
+.winner .stars {
+    margin: 0;
+}
+.winner button{
+    display: block;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 10px 20px 10px 20px;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+.close {
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 58px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
