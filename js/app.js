@@ -12,18 +12,19 @@ let openCards = [];
 function openCard(card) {
     openCards.push(card);
     if ((openCards.length) && !(openCards.length % 2)) {
-        console.log('inif')
         if (openCards[openCards.length - 2].children[0].classList[1] === openCards[openCards.length - 1].children[0].classList[1]) {
             openCards[openCards.length - 2].classList.add("match");
             openCards[openCards.length - 1].classList.add("match");
         } else {
         	let tmp1 = openCards.pop();
             let tmp2 = openCards.pop();
+            tmp1.classList.add("incorrect");
+            tmp2.classList.add("incorrect");
             setTimeout(function() {
                 tmp1.className = "card";
                 tmp2.className = "card";
 
-            }, 1000);
+            }, 900);
 
 
         }
