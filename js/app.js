@@ -39,6 +39,7 @@ document.getElementsByClassName("restart")[0].addEventListener("click",start);
 start();
 function start(){
 	moves = -1;
+    openCards = [];
 	let cardsArr = shuffle([...cards]);
     deck.innerHTML = "";
     increaseMoves();
