@@ -1,6 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
+
+/*jshint esversion: 6 */
+
 const deck = document.getElementsByClassName("deck")[0];
 let cards = document.getElementsByClassName("card");
 let time = 0;
@@ -9,14 +12,14 @@ let firstClick = true;
 let timeInterval;
 let openCards = [];
 let winnerContainer = document.getElementsByClassName("winner-container")[0];
-let close = document.getElementsByClassName("close")[0];
-const inActiveStars = document.getElementsByClassName('fa-star-o')
+let closeLabel = document.getElementsByClassName("close")[0];
+const inActiveStars = document.getElementsByClassName('fa-star-o');
 const activeStars = document.getElementsByClassName('fa-star');
 winnerContainer.style.display = 'none';
 
 function openCard(card) {
     openCards.push(card);
-    if ((openCards.length) && !(openCards.length % 2)) {
+    if ((openCards.length) && (openCards.length % 2 === 0)) {
         if (openCards[openCards.length - 2].children[0].classList[1] === openCards[openCards.length - 1].children[0].classList[1]) {
             openCards[openCards.length - 2].classList.add("match");
             openCards[openCards.length - 1].classList.add("match");
@@ -55,10 +58,10 @@ function start() {
     increaseTime();
     for (let card of cardsArr) {
         card.className = "card";
-        deck.append(card)
+        deck.append(card);
     }
     [...inActiveStars].forEach(function(e) {
-            e.classList.replace("fa-star-o", "fa-star");
+        e.classList.replace("fa-star-o", "fa-star");
     });
 
 
@@ -100,9 +103,9 @@ deck.addEventListener("click", function(e) {
         }
         increaseMoves();
         e.target.classList.add("open", "show");
-        openCard(e.target)
+        openCard(e.target);
     }
-})
+});
 
 function increaseMoves() {
     document.getElementsByClassName("moves")[0].textContent = ++moves;
@@ -125,7 +128,7 @@ function playAgain() {
     start();
 }
 
-close.addEventListener('click', function() {
+closeLabel.addEventListener('click', function() {
 
     winnerContainer.style.display = 'none';
 
