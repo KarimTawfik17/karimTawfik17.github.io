@@ -1,7 +1,3 @@
-/*
- * Create a list that holds all of your cards
- */
-
 /*jshint esversion: 6 */
 
 const deck = document.getElementsByClassName("deck")[0];
@@ -17,7 +13,10 @@ const inActiveStars = document.getElementsByClassName('fa-star-o');
 const activeStars = document.getElementsByClassName('fa-star');
 winnerContainer.style.display = 'none';
 
+
+
 function openCard(card) {
+    //opens the card and check if it's a match
     openCards.push(card);
     if ((openCards.length) && (openCards.length % 2 === 0)) {
         if (openCards[openCards.length - 2].children[0].classList[1] === openCards[openCards.length - 1].children[0].classList[1]) {
@@ -36,17 +35,21 @@ function openCard(card) {
 
 
         }
+        // every time card is is opened check if the game has ended 
         if (openCards.length === 16) {
             clearInterval(timeInterval);
+            // display the winning modal
             winnerContainer.style.display = 'block';
 
         }
 
     }
 }
+// add click listener to restart button
 document.getElementsByClassName("restart")[0].addEventListener("click", playAgain);
 start();
 
+// resetting everything and start the game
 function start() {
     clearInterval(timeInterval);
     moves = -1;
@@ -68,17 +71,6 @@ function start() {
 }
 
 
-// console.log(cards);
-
-// console.log(cards);
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -95,6 +87,7 @@ function shuffle(array) {
     return array;
 }
 
+// add click listener to cards only
 deck.addEventListener("click", function(e) {
     if (e.target.nodeName === "LI" && e.target.className === "card") {
         if (firstClick) {
@@ -107,6 +100,8 @@ deck.addEventListener("click", function(e) {
     }
 });
 
+
+// increase moves on click on card
 function increaseMoves() {
     document.getElementsByClassName("moves")[0].textContent = ++moves;
     document.getElementsByClassName("moves")[1].textContent = moves;
@@ -117,31 +112,22 @@ function increaseMoves() {
     }
 }
 
+// timer functionality
 function increaseTime() {
     document.getElementsByClassName("time")[0].textContent = ++time;
     document.getElementsByClassName("time")[1].textContent = time;
 }
 
+// restart the game functionality
 function playAgain() {
     winnerContainer.style.display = 'none';
     firstClick = true;
     start();
 }
 
+// close the modal on click on close label
 closeLabel.addEventListener('click', function() {
 
     winnerContainer.style.display = 'none';
 
 });
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
