@@ -29,6 +29,7 @@ body {
 }
 
 h1 {
+    color: red;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
@@ -38,7 +39,7 @@ h1 {
  */
 
 .deck {
-    width: 660px;
+    max-width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
@@ -245,4 +246,23 @@ styles*/
     text-decoration: none;
     cursor: pointer;
 }
+@media screen and (max-width: 660px) {
+    h1 {
+        font-size: 1.5em;
+    }
+  .deck .card{
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
+  .deck .card.show {
+    font-size: 20px;
+}
 
+  .deck {
+    width: 330px;
+    min-height: 360px; 
+  }
+
+}
