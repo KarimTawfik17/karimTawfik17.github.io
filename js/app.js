@@ -41,10 +41,11 @@ function openCard(card) {
 
     }
 }
-document.getElementsByClassName("restart")[0].addEventListener("click", start);
+document.getElementsByClassName("restart")[0].addEventListener("click", playAgain);
 start();
 
 function start() {
+    clearInterval(timeInterval);
     moves = -1;
     time = -1;
     openCards = [];
