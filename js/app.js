@@ -8,10 +8,18 @@ let firstClick = true;
 let timeInterval;
 let openCards = [];
 let winnerContainer = document.getElementsByClassName("winner-container")[0];
+let katkota  = document.querySelector(".katkota")
+let pass = document.getElementById("pass");
 let closeLabel = document.getElementsByClassName("close")[0];
 const inActiveStars = document.getElementsByClassName('fa-star-o');
 const activeStars = document.getElementsByClassName('fa-star');
+const regularStars = document.getElementsByClassName('stars')[1];
+
+const ayahStars = document.getElementsByClassName('ayah-stars')[0];
+
 winnerContainer.style.display = 'none';
+
+
 
 
 
@@ -124,10 +132,23 @@ function playAgain() {
     firstClick = true;
     start();
 }
+function qousa(){
+    if (pass.value == "b7bk awesh"){
+    katkota.style.display = "block"
+    regularStars.style.display = "none"
+    ayahStars.style.display = "inline-block"
+    }
+
+    
+}
+
 
 // close the modal on click on close label
 closeLabel.addEventListener('click', function() {
 
     winnerContainer.style.display = 'none';
+    katkota.style.display = "none"
 
 });
+
+
